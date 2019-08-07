@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <mobile-slide></mobile-slide>
+    <!--<mobile-slide></mobile-slide>-->
+    <!--<bg-img></bg-img>-->
   </div>
 </template>
 
 <script>
 
-  import mobileSlide from './components/mobile-slide'
+  // import mobileSlide from './components/mobile-slide'
+  // import bgImg from './components/bg-img'
 
   export default {
     name: 'app',
     components: {
-      mobileSlide
+      // mobileSlide,
+      // bgImg
     }
   }
 </script>
