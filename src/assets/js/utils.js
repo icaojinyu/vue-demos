@@ -1,4 +1,4 @@
-function obj2str(obj) {
+export function obj2str(obj) {
   let arr = []
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -8,7 +8,7 @@ function obj2str(obj) {
   return arr.join('&')
 }
 
-function jsonp(option = {}) {
+export function jsonp(option = {}) {
   return new Promise((resolve, reject) => {
     let {url, params = {}, fnKey = 'callback', timeout = 60 * 10} = option
     let callbackName = params[fnKey] = `jsonp${Date.now()}`
@@ -30,6 +30,29 @@ function jsonp(option = {}) {
   })
 }
 
-module.exports = {
-  jsonp
+export function bubbleSort(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+      }
+    }
+  }
+  return arr
+}
+
+export function quickSort(arr) {
+  if (arr.length <= 1) {
+    return arr
+  }
+  let base = arr.splice(~~arr.length / 2, 1)[0]
+  let left = [], right = []
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < base) {
+      left.push(arr[i])
+    } else {
+      right.push(arr[i])
+    }
+  }
+  return quickSort(left).concat(base, quickSort(right))
 }

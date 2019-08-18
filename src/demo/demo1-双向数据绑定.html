@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>demo1-双向数据绑定</title>
+</head>
+<body>
+<input type="text" id="a">
+<p id="b"></p>
+<script>
+  let input = document.getElementById('a')
+  let p = document.getElementById('b')
+
+  let obj = {}
+  Object.defineProperty(obj, 'message', {
+    get() {
+      console.log('触发get方法')
+    },
+    set(val) {
+      console.log('触发set方法')
+      input.value = p.innerHTML = val
+    }
+  })
+
+  input.addEventListener('input', function (e) {
+    obj.message = e.target.value
+  })
+</script>
+</body>
+</html>
